@@ -25,14 +25,14 @@ const Cadastro = () => {
         <h1>Cadastrar Produto</h1>
         <Formik
             initialValues={{
-                id: 1,
-                nome: 'suco de laranja',
-                descricao: 'suco natural de laranja',
-                codigoBarras: '1234567890123',
+                id: 0,
+                nome: '',
+                descricao: '',
+                codigoBarras: '',
                 foto: null,
-                preco: 13.5,
-                categoria: 'bebidas',
-                destaque: 'promoção natural',
+                preco: 0.0,
+                categoria: '',
+                destaque: '',
                 statusProd: 'ATIVO'
             }}
             onSubmit={(values, actions) => {
@@ -62,7 +62,9 @@ const Cadastro = () => {
                             onChange={props.handleChange}
                             onBlur={props.handleBlur}
                             value={props.values.id}
+                            placeholder='0'
                             name="id"
+                            disabled
                         />
                         {props.errors.id && <div id="feedback">{props.errors.id}</div>}
                     </div>
@@ -73,6 +75,7 @@ const Cadastro = () => {
                             onChange={props.handleChange}
                             onBlur={props.handleBlur}
                             value={props.values.nome}
+                            placeholder="Nome do Produto"
                             name="nome"
                         />
                         {props.errors.nome && <div id="feedback">{props.errors.nome}</div>}
@@ -85,6 +88,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.descricao}
                             name="descricao"
+                            placeholder="Descrição do Produto"
                         />
                         {props.errors.descricao && <div id="feedback">{props.errors.descricao}</div>}
                     </div>
@@ -95,6 +99,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.codigoBarras}
                             name="codigoBarras"
+                            placeholder="1112223334445"
                         />
                         {props.errors.codigoBarras && <div id="feedback">{props.errors.codigoBarras}</div>}
                     </div>
@@ -105,6 +110,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.foto}
                             name="foto"
+                            placeholder="Foto do Produto"
                             hidden
                         />
                         {props.errors.foto && <div id="feedback">{props.errors.foto}</div>}
@@ -116,6 +122,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.preco}
                             name="preco"
+                            placeholder="0.0"
                         />
                         {props.errors.preco && <div id="feedback">{props.errors.preco}</div>}
                     </div>
@@ -126,6 +133,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.categoria}
                             name="categoria"
+                            placeholder="Categoria do Produto"
                         />
                         {props.errors.categoria && <div id="feedback">{props.errors.categoria}</div>}
                     </div>
@@ -136,6 +144,7 @@ const Cadastro = () => {
                             onBlur={props.handleBlur}
                             value={props.values.destaque}
                             name="destaque"
+                            placeholder="Destaque do Produto"
                         />
                         {props.errors.destaque && <div id="feedback">{props.errors.destaque}</div>}
                     </div>
