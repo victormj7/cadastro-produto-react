@@ -1,7 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Formik } from 'formik';
+import axios from 'axios';
 
-const Cadastro = () => (
+const Cadastro = () => {
+
+    const [dados, setDados] = useState({})
+    const [clicou, setClicou] = useState(false)
+
+    function enviarDados(){
+        axios.post('http://localhost:8080/produto', 
+            dados
+        ).then(response => console.log(response))
+        .then(dados => alert('Dados enviados com sucesso'))
+        .catch(error => console.log(error))
+    }
+    
+    useEffect(()=>{
+       clicou ? enviarDados() : console.log('app no ar')
+       return (()=>setClicou(false))
+    }, [clicou])
+    
+    return (
     <div>
         <h1>Cadastrar Produto</h1>
         <Formik
@@ -10,17 +29,28 @@ const Cadastro = () => (
                 nome: 'suco de laranja',
                 descricao: 'suco natural de laranja',
                 codigoBarras: '1234567890123',
-                foto: [],
-                preco: '13.5',
+                foto: null,
+                preco: 13.5,
                 categoria: 'bebidas',
                 destaque: 'promoção natural',
                 statusProd: 'ATIVO'
             }}
             onSubmit={(values, actions) => {
                 setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    console.log(JSON.stringify(values, null, 2));
-                    actions.setSubmitting(false);
+                    setDados({
+                        nome: values.nome,
+                        descricao: values.descricao,
+                        codigoBarras: values.codigoBarras,
+                        foto: values.foto,
+                        preco: values.preco,
+                        categoria: values.categoria,
+                        destaque: values.destaque,
+                        statusProd: values.statusProd
+                    })
+                    setClicou(true)
+                    // alert(JSON.stringify(values, null, 2));
+                    // console.log(JSON.stringify(values, null, 2));
+                    // actions.setSubmitting(false);
                 }, 1000);
             }}
         >
@@ -128,6 +158,7 @@ const Cadastro = () => (
             )}
         </Formik>
     </div>
-);
+    );
+}
 
 export default Cadastro
