@@ -38,22 +38,24 @@ const Cadastro = () => {
             onSubmit={(values, actions) => {
 
                 if(values.nome.length > 0){
-                    setTimeout(() => {
-                    setDados({
-                        nome: values.nome,
-                        descricao: values.descricao,
-                        codigoBarras: values.codigoBarras,
-                        foto: values.foto,
-                        preco: values.preco,
-                        categoria: values.categoria,
-                        destaque: values.destaque,
-                        statusProd: values.statusProd
-                    })
-                    setClicou(true)
-                    // alert(JSON.stringify(values, null, 2));
-                    // console.log(JSON.stringify(values, null, 2));
-                    // actions.setSubmitting(false);
-                }, 1000);
+                        setTimeout(() => {
+                        setDados({
+                            nome: values.nome,
+                            descricao: values.descricao,
+                            codigoBarras: values.codigoBarras,
+                            foto: values.foto,
+                            preco: values.preco,
+                            categoria: values.categoria,
+                            destaque: values.destaque,
+                            statusProd: values.statusProd
+                        })
+                        setClicou(true)
+                        // alert(JSON.stringify(values, null, 2));
+                        // console.log(JSON.stringify(values, null, 2));
+                        // actions.setSubmitting(false);
+                    }, 1000);
+                } else {
+                    alert('Favor preencher informações!')
                 }
                 
             }}
