@@ -36,7 +36,9 @@ const Cadastro = () => {
                 statusProd: 'ATIVO'
             }}
             onSubmit={(values, actions) => {
-                setTimeout(() => {
+
+                if(values.nome.length > 0){
+                    setTimeout(() => {
                     setDados({
                         nome: values.nome,
                         descricao: values.descricao,
@@ -52,6 +54,8 @@ const Cadastro = () => {
                     // console.log(JSON.stringify(values, null, 2));
                     // actions.setSubmitting(false);
                 }, 1000);
+                }
+                
             }}
         >
             {props => (
